@@ -1,77 +1,121 @@
-#!/usr/bin/env python3
-# brawl_stars_info.py
-# Полный автономный скрипт для сбора информации об игре Brawl Stars
+# 🎮 Brawl Stars — вся інформація про гру
 
-import os
-import json
-import datetime
-import sys
+![Brawl Stars](https://upload.wikimedia.org/wikipedia/ru/thumb/9/9c/Brawl_Stars.png/300px-Brawl_Stars.png)
 
-# ------ ДАННЫЕ (ИНФОРМАЦИЯ ОБ ИГРЕ) ------
-BRAWLERS = [
-    {"name": "Спайк", "rarity": "Легендарный", "class": "Снайпер", "health": 2600, "damage": 800},
-    {"name": "Кольт", "rarity": "Редкий", "class": "Стрелок", "health": 2800, "damage": 420},
-    {"name": "Шелли", "rarity": "Начинающий", "class": "Боец ближнего боя", "health": 3000, "damage": 300},
-    {"name": "Бо", "rarity": "Эпический", "class": "Снайпер", "health": 3400, "damage": 520},
-    {"name": "Лу", "rarity": "Сверхредкий", "class": "Контроллер", "health": 2600, "damage": 400},
-    {"name": "Фанг", "rarity": "Эпический", "class": "Ассасин", "health": 3200, "damage": 450},
-    {"name": "Эдгар", "rarity": "Сверхредкий", "class": "Ассасин", "health": 2800, "damage": 360},
-    {"name": "Лола", "rarity": "Эпический", "class": "Поддержка", "health": 3100, "damage": 390}
-]
+> Актуальна інформація про популярну мобільну гру від Supercell
 
-NEWS = [
-    {"date": "2025-03-10", "title": "Обновление: новый боец Мелоди", "content": "Музыкальный ассасин с особыми способностями."},
-    {"date": "2025-02-20", "title": "Киберспортивный сезон 2025", "content": "Старт квалификаций на мировое первенство."},
-    {"date": "2025-02-01", "title": "Балансные изменения", "content": "Нерф Лолы и бафф Эдгара."}
-]
+---
 
-GAME_MODES = [
-    "Баунти", "Кража", "Горячая зона", "Натиск", "Удар чемпионов", "Вышибалы", "Захват кристаллов"
-]
+## 📊 Про гру
 
-# ------ ФУНКЦИИ (НЕ ВИДНЫ СНАРУЖИ, ТОЛЬКО РЕЗУЛЬТАТ) ------
-def create_dirs():
-    for d in ['data', 'docs']:
-        os.makedirs(d, exist_ok=True)
+| Характеристика | Значення |
+|----------------|----------|
+| **Розробник** | Supercell |
+| **Дата виходу** | 12 грудня 2018 |
+| **Жанр** | MOBA, багатокористувацький шутер |
+| **Платформи** | iOS, Android |
+| **Віковий рейтинг** | 9+ |
+| **Мова інтерфейсу** | Українська (є в налаштуваннях) |
 
-def save_json(filename, data):
-    with open(filename, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+---
 
-def save_txt(filename, lines):
-    with open(filename, 'w', encoding='utf-8') as f:
-        for line in lines:
-            f.write(f"{line}\n")
+## 🥊 Усі бійці (станом на 2025)
 
-def generate_info_md():
-    md = f"""# 📊 Brawl Stars — информация об игре
+### Легендарні
+- 🦔 **Спайк** — снайпер з кактусовими шипами
+- 🧙 **Сенді** — створює сонний туман
+- 🤖 **Мег** — пілотує робота
+- 🧛 **Дракус** — вампір-ассасин
 
-**Актуально на:** {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+### Епічні
+- 🦘 **Фанг** — удари ногами
+- 🧸 **Лола** — акторка з двійником
+- 🦜 **Гріфф** — власник готелю
+- 🔥 **Амбер** — вогняний контролер
 
-## 🥊 Бойцы ({len(BRAWLERS)})
-| Имя | Редкость | Класс | HP | Урон |
-|-----|----------|-------|----|------|
-"""
-    for b in BRAWLERS:
-        md += f"| {b['name']} | {b['rarity']} | {b['class']} | {b['health']} | {b['damage']} |\n"
+### Рідкісні/Надзвичайні
+- 🔫 **Кольт** — стрілець
+- 🐕 **Ніта** — з ведмедем Брюсом
+- 💥 **Шеллі** — початковий боєць
+- 🧙‍♀️ **Бо** — мисливець з пастками
 
-    md += "\n## 🎮 Режимы игры\n" + "\n".join(f"- {m}" for m in GAME_MODES)
-    md += "\n\n## 📰 Новости\n"
-    for n in NEWS:
-        md += f"**{n['date']}** — {n['title']}\n{n['content']}\n\n"
-    return md
+> Повний список (70+ бійців) можна побачити в грі або на [офіційному сайті](https://brawlstars.com)
 
-def generate_readme():
-    return f"""# 🏆 Brawl Stars Info Repository
+---
 
-Автоматическая сборка информации об игре Brawl Stars.
+## 🎮 Режими гри
 
-## Данные в репозитории
-- `data/brawlers.json` — все бойцы
-- `data/news.json` — новости игры
-- `data/game_modes.txt` — режимы
-- `docs/INFO.md` — читаемый отчёт
+| Режим | Опис |
+|-------|------|
+| **Викрадення кристалів (Gem Grab)** | Зберіть 10 кристалів та утримуйте їх |
+| **Бій за зірки (Bounty)** | Вбивайте ворогів за зірки |
+| **Хардкор (Heist)** | Зламайте сейф суперників |
+| **Зона (Hot Zone)** | Утримуйте зону |
+| **Натиск (Brawl Ball)** | Забийте гол у ворота |
+| **Удар чемпіонів (Knockout)** | Остання команда, яка вижила |
+| **Королівська битва (Solo/Duo Showdown)** | 10 гравців — останній живий |
 
-## Запуск обновления
-```bash
-python brawl_stars_info.py
+---
+
+## 📅 Останні оновлення
+
+### Патч 2025 (березень)
+- ✅ Новий боєць — **Мелоді** (музичний ассасин)
+- ✅ Баланс: Лола (нерф), Едгар (бафф)
+- ✅ Нова карта для Hot Zone — **«Спекотний пляж»**
+
+### Патч 2025 (лютий)
+- ✅ Кіберспортивний сезон 2025 стартував
+- ✅ Оновлення графіки на трофейній дорозі
+
+---
+
+## 🏆 Змагання та кіберспорт
+
+- **Brawl Stars World Finals** — грудень 2025
+- **Чемпіонат України** — кваліфікації щомісяця
+- Призовий фонд: $2,000,000+
+
+---
+
+## 🔗 Корисні посилання
+
+| Ресурс | Лінк |
+|--------|------|
+| Офіційний сайт | [brawlstars.com](https://brawlstars.com) |
+| Українська спільнота | [Discord](https://discord.gg/brawlstars) |
+| Вікі Fandom | [brawlstars.fandom.com](https://brawlstars.fandom.com) |
+| Підтримка Supercell | [support.supercell.com](https://support.supercell.com) |
+
+---
+
+## 📱 Як завантажити
+
+[![App Store](https://img.shields.io/badge/App_Store-0D96F6?style=for-the-badge&logo=app-store&logoColor=white)](https://apps.apple.com/app/brawl-stars/id1229016807)
+[![Google Play](https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.supercell.brawlstars)
+
+---
+
+## ⭐ Поради для новачків
+
+1. **Не витрачайте монети на скіни** — спочатку купуйте бійців
+2. **Проробляйте квести щодня** — це дає багато досвіду
+3. **Грайте з друзями** — командний чат дуже важливий
+4. **Дивіться YouTube-канали** (KairosTime, Lex) для мети
+
+---
+
+*Створено спільнотою гравців Brawl Stars*  
+📅 Останнє оновлення: березень 2025  
+🇺🇦 **Підтримуйте українську локалізацію!**
+
+---
+
+## 🛠 Для розробників
+
+Цей репозиторій містить:
+- `README.md` — інформація про гру (ви тут)
+- `data/brawlers.json` — повна база бійців
+- `docs/strategy.md` — поради для кожного режиму
+
+Якщо хочете внести зміни — робіть Pull Request!
